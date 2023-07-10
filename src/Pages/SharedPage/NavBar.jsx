@@ -37,7 +37,7 @@ const NavBar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-white"
           >
             {navItems}
           </ul>
@@ -47,10 +47,12 @@ const NavBar = () => {
           alt="Website Logo"
           className="h-12 w-auto"
         />
-        <a className="btn btn-ghost normal-case text-xl pb-1">SportCamp</a>
+        <a className="btn btn-ghost normal-case text-xl pb-1 text-white">
+          SportCamp
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{navItems}</ul>
+        <ul className="menu menu-horizontal px-1 text-white">{navItems}</ul>
       </div>
       <div className="navbar-end">
         {/* <div
