@@ -81,7 +81,9 @@ const NavBar = () => {
               <button className="btn btn-outline btn-accent">Login</button>
             </Link>
           )} */}
-          <button className="btn btn-outline btn-accent">Login</button>
+          <Link to="/login">
+            <button className="btn btn-outline btn-accent">Login</button>
+          </Link>
         </div>
       </div>
     </div>
