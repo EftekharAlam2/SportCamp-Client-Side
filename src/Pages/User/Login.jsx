@@ -1,16 +1,19 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { Context } from "../../AuthProviders/Providers";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
+import { Context } from "../AuthProviders/Providers";
+import { Helmet } from "react-helmet-async";
+import { AiFillEye } from "react-icons/ai";
 
 const Login = () => {
   const { signIn, googleSignIn } = useContext(Context);
   const location = useLocation();
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
 
   const from = location.state?.from?.pathname || "/";
 
-  const loginButton = (event) => {
+  const handleLogin = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
@@ -20,7 +23,7 @@ const Login = () => {
         const loggedUser = result.user;
         Swal.fire({
           icon: "success",
-          title: "Login Successfully",
+          title: "Login Successful",
           showConfirmButton: false,
           timer: 1500,
         });
@@ -30,10 +33,10 @@ const Login = () => {
       })
       .catch(() => {
         Swal.fire({
-          title: "Wrong Email and password!!!",
-          text: "Do you want to continue",
+          title: "Wrong Email and Password",
+          text: "Please try again",
           icon: "error",
-          confirmButtonText: "Cool",
+          confirmButtonText: "OK",
         });
       });
   };
@@ -43,9 +46,22 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        const saveUser = { instructor: user.displayName, email: user.email };
+        fetch(
+          "https://b7a12-summer-camp-server-side-eftekhar-alam2.vercel.app/classes",
+          {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(saveUser),
+          }
+        )
+          .then((res) => res.json())
+          .then(() => {});
         Swal.fire({
           icon: "success",
-          title: "Login Successfully",
+          title: "Login Successful",
           showConfirmButton: false,
           timer: 1500,
         });
@@ -56,55 +72,70 @@ const Login = () => {
       });
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
   return (
-    <div className="flex items-center justify-center  bg-gray-200">
-      <div className="bg-white rounded-lg shadow-md my-10 p-8">
-        <h2 className="text-3xl font-bold mb-6">LOG IN</h2>
-        <form className="w-full max-w-sm" onSubmit={loginButton}>
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-700 mb-2">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              className="w-full rounded-lg py-2 px-4 border border-gray-300 focus:outline-none focus:border-blue-500"
-              required
-            />
+    <div className="flex items-center justify-center bg-gray-200 h-screen">
+      <Helmet>
+        <title>SportCamp | LogIn</title>
+      </Helmet>
+      <Flip>
+        <div className="bg-white rounded-lg shadow-md p-8">
+          <h2 className="text-3xl font-bold mb-6 text-center">Log In</h2>
+          <form className="max-w-sm mx-auto" onSubmit={handleLogin}>
+            <div className="mb-4">
+              <label htmlFor="email" className="block text-gray-700 mb-2">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                className="w-full rounded-lg py-2 px-4 border border-gray-300 focus:outline-none focus:border-blue-500"
+                required
+              />
+            </div>
+            <div className="mb-6">
+              <label htmlFor="password" className="block text-gray-700 mb-2">
+                Password
+              </label>
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  className="w-full rounded-lg py-2 px-4 border border-gray-300 focus:outline-none focus:border-blue-500"
+                  required
+                />
+                <AiFillEye
+                  className="absolute top-1/2 right-2 transform -translate-y-1/2 cursor-pointer"
+                  onClick={togglePasswordVisibility}
+                />
+              </div>
+            </div>
+            <button
+              type="submit"
+              className="btn btn-outline btn-accent w-full py-2 px-4 rounded-lg text-white font-bold"
+            >
+              Log In
+            </button>
+          </form>
+          <div className="mt-6 text-center">
+            <button
+              className="btn btn-secondary w-full py-2 px-4 rounded-lg text-white font-bold"
+              onClick={handleGoogleSignIn}
+            >
+              Sign in with Google
+            </button>
           </div>
-          <div className="mb-6">
-            <label htmlFor="password" className="block text-gray-700 mb-2">
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              className="w-full rounded-lg py-2 px-4 border border-gray-300 focus:outline-none focus:border-blue-500"
-              required
-            />
-          </div>
-          <button
-            type="submit"
-            className="btn btn-outline btn-warning text-white font-bold py-2 px-4 rounded-lg w-full"
-          >
-            LogIn
-          </button>
-        </form>
-        <div className="mt-6">
-          <button
-            className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg w-full"
-            onClick={handleGoogleSignIn}
-          >
-            Sign in with Google
-          </button>
+          <p className="mt-6 text-center">
+            Don&apos;t have an account?{" "}
+            <Link to="/signup" className="text-blue-500 underline">
+              SignUp here
+            </Link>
+          </p>
         </div>
-        <p className="mt-6 text-center">
-          Don&apos;t have an account?{" "}
-          <Link to="/register" className="text-blue-500 underline">
-            Register here
-          </Link>
-        </p>
-      </div>
+      </Flip>
     </div>
   );
 };
