@@ -1,9 +1,9 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
-import { Context } from "../AuthProviders/Providers";
 import { Helmet } from "react-helmet-async";
 import { AiFillEye } from "react-icons/ai";
+import { Context } from "../../AuthProviders/Providers";
 
 const Login = () => {
   const { signIn, googleSignIn } = useContext(Context);
