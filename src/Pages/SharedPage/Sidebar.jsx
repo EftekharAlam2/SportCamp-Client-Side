@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react";
 import { useRef } from "react";
-import SubMenu from "./SubMenu";
 import { motion } from "framer-motion";
-
 import { IoIosArrowBack } from "react-icons/io";
 import { SlSettings } from "react-icons/sl";
 import { AiOutlineAppstore } from "react-icons/ai";
 import { BsPerson } from "react-icons/bs";
 import { HiOutlineDatabase } from "react-icons/hi";
-import { TbReportAnalytics } from "react-icons/tb";
-import { RiBuilding3Line } from "react-icons/ri";
 import { useMediaQuery } from "react-responsive";
 import { MdMenu } from "react-icons/md";
 import { NavLink, useLocation } from "react-router-dom";
@@ -65,19 +61,6 @@ const Sidebar = () => {
         },
       };
 
-  const subMenusList = [
-    {
-      name: "build",
-      icon: RiBuilding3Line,
-      menus: ["auth", "app settings", "stroage", "hosting"],
-    },
-    {
-      name: "analytics",
-      icon: TbReportAnalytics,
-      menus: ["dashboard", "realtime", "events"],
-    },
-  ];
-
   return (
     <div>
       <div
@@ -93,7 +76,7 @@ const Sidebar = () => {
         animate={open ? "open" : "closed"}
         className=" bg-white text-gray shadow-xl z-[999] max-w-[16rem]  w-[16rem] 
             overflow-hidden md:relative fixed
-         h-screen "
+            h-[40vh] "
       >
         <div className="flex items-center gap-2.5 font-medium border-b py-3 border-slate-300  mx-3">
           <img
@@ -134,18 +117,6 @@ const Sidebar = () => {
               </NavLink>
             </li>
 
-            {(open || isTabletMid) && (
-              <div className="border-y py-5 border-slate-300 ">
-                <small className="pl-3 text-slate-500 inline-block mb-2">
-                  Product categories
-                </small>
-                {subMenusList?.map((menu) => (
-                  <div key={menu.name} className="flex flex-col gap-1">
-                    <SubMenu data={menu} />
-                  </div>
-                ))}
-              </div>
-            )}
             <li>
               <NavLink
                 to={"/settings"}
@@ -156,19 +127,6 @@ const Sidebar = () => {
               </NavLink>
             </li>
           </ul>
-          {open && (
-            <div className="flex-1 text-sm z-50  max-h-48 my-auto  whitespace-pre   w-full  font-medium  ">
-              <div className="flex border-y border-slate-300 p-4 items-center justify-between">
-                <div>
-                  <p>Spark</p>
-                  <small>No-cost $0/month</small>
-                </div>
-                <p className="text-teal-500 py-1.5 px-3 text-xs bg-teal-50 rounded-xl">
-                  Upgrade
-                </p>
-              </div>
-            </div>
-          )}
         </div>
         <motion.div
           onClick={() => {
@@ -183,12 +141,12 @@ const Sidebar = () => {
                 }
               : {
                   x: -10,
-                  y: -200,
+                  y: 0,
                   rotate: 180,
                 }
           }
           transition={{ duration: 0 }}
-          className="absolute w-fit h-fit md:block z-50 hidden right-2 bottom-3 cursor-pointer"
+          className="absolute w-fit h-fit md:block z-50 hidden right-2 bottom-4 cursor-pointer"
         >
           <IoIosArrowBack size={25} />
         </motion.div>
