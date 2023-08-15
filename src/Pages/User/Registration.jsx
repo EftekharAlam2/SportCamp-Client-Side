@@ -101,90 +101,96 @@ const Registration = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+    <div className="max-w-md mx-auto my-4 p-6 bg-white rounded-md shadow-md">
       <Helmet>
         <title>SportCamp | SignUp</title>
       </Helmet>
-      <div className="bg-white rounded-lg shadow-md p-8">
-        <h2 className="text-3xl font-bold mb-6 text-center">Registration</h2>
-        <form className="max-w-sm mx-auto" onSubmit={handleRegistration}>
-          <div className="mb-4">
-            <label htmlFor="name" className="block text-gray-700 mb-2">
-              Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              className="w-full rounded-lg py-2 px-4 border border-gray-300 focus:outline-none focus:border-blue-500"
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-700 mb-2">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              className="w-full rounded-lg py-2 px-4 border border-gray-300 focus:outline-none focus:border-blue-500"
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="password" className="block text-gray-700 mb-2">
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              className="w-full rounded-lg py-2 px-4 border border-gray-300 focus:outline-none focus:border-blue-500"
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              htmlFor="confirmPassword"
-              className="block text-gray-700 mb-2"
-            >
-              Confirm Password
-            </label>
-            <input
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              className="w-full rounded-lg py-2 px-4 border border-gray-300 focus:outline-none focus:border-blue-500"
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="photoURL" className="block text-gray-700 mb-2">
-              Photo URL
-            </label>
-            <input
-              type="text"
-              id="photoURL"
-              name="photo"
-              className="w-full rounded-lg py-2 px-4 border border-gray-300 focus:outline-none focus:border-blue-500"
-              required
-            />
-          </div>
+      <form className="max-w-sm mx-auto" onSubmit={handleRegistration}>
+        <div className="mb-4">
+          <label htmlFor="name" className="block text-gray-700 font-bold mb-2">
+            Name
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            className="w-full border-gray-300 rounded-md shadow-xl focus:border-blue-500 focus:ring-blue-500 px-3 py-2"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="email" className="block text-gray-700 font-bold mb-2">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            className="w-full border-gray-300 rounded-md shadow-xl focus:border-blue-500 focus:ring-blue-500 px-3 py-2"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            htmlFor="password"
+            className="block text-gray-700 font-bold mb-2"
+          >
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            className="w-full border-gray-300 rounded-md shadow-xl focus:border-blue-500 focus:ring-blue-500 px-3 py-2"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            htmlFor="confirmPassword"
+            className="block text-gray-700 font-bold mb-2"
+          >
+            Confirm Password
+          </label>
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            className="w-full border-gray-300 rounded-md shadow-xl focus:border-blue-500 focus:ring-blue-500 px-3 py-2"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            htmlFor="photoURL"
+            className="block text-gray-700 font-bold mb-2"
+          >
+            Photo URL
+          </label>
+          <input
+            type="text"
+            id="photoURL"
+            name="photo"
+            className="w-full border-gray-300 rounded-md shadow-xl focus:border-blue-500 focus:ring-blue-500 px-3 py-2"
+            required
+          />
+        </div>
+        <div>
           <button
             type="submit"
-            className="btn btn-outline btn-accent text-white font-bold py-2 px-4 rounded-lg w-full"
+            className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
             Register
           </button>
-        </form>
-        <p className="mt-6 text-center">
+        </div>
+        <div className="mt-4 text-center">
           Already have an account?{" "}
-          <Link to="/login" className="text-blue-500 underline">
-            Log in here
-          </Link>
-        </p>
-      </div>
+          <p className="text-blue-500 hover:text-red-700 link">
+            <Link to="/login">Go to the login page</Link>
+          </p>{" "}
+          .
+        </div>
+      </form>
     </div>
   );
 };
