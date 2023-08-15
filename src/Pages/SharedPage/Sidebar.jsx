@@ -83,7 +83,7 @@ const Sidebar = () => {
       >
         <div className="flex items-center gap-2.5 font-medium border-b py-3 border-slate-300  mx-3">
           <img src="https://i.ibb.co/P1P4vBP/logo.png" width={45} alt="" />
-          <span className="text-xl whitespace-pre">SportCamp</span>
+          <span className="text-xl whitespace-pre ms-2">SportCamp</span>
         </div>
 
         <div className="flex flex-col  h-full">
