@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <div>
       <footer
-        className={`footer footer-center p-5 md:p-10 bg-primary text-primary-content ${
+        className={`footer footer-center p-5 md:p-10 bg-blue-500 text-primary-content ${
           isMobile ? "text-sm" : ""
         }`}
       >

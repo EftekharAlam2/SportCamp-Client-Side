@@ -1,19 +1,16 @@
+import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
-import Swal from "sweetalert2";
-import { Helmet } from "react-helmet-async";
-import { AiFillEye } from "react-icons/ai";
 import { Context } from "../../AuthProviders/Providers";
+import Swal from "sweetalert2";
 
 const Login = () => {
-  const { signIn, googleSignIn } = useContext(Context);
+  const { signIn, googleSignIn, githubSignIn } = useContext(Context);
   const location = useLocation();
   const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false);
 
   const from = location.state?.from?.pathname || "/";
 
-  const handleLogin = (event) => {
+  const loginButtonClick = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
@@ -23,7 +20,7 @@ const Login = () => {
         const loggedUser = result.user;
         Swal.fire({
           icon: "success",
-          title: "Login Successful",
+          title: "Login Successfully",
           showConfirmButton: false,
           timer: 1500,
         });
@@ -33,10 +30,10 @@ const Login = () => {
       })
       .catch(() => {
         Swal.fire({
-          title: "Wrong Email and Password",
-          text: "Please try again",
+          title: "Wrong Email and password!!!",
+          text: "Do you want to continue",
           icon: "error",
-          confirmButtonText: "OK",
+          confirmButtonText: "Cool",
         });
       });
   };
@@ -46,22 +43,9 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        const saveUser = { instructor: user.displayName, email: user.email };
-        fetch(
-          "https://b7a12-summer-camp-server-side-eftekhar-alam2.vercel.app/classes",
-          {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(saveUser),
-          }
-        )
-          .then((res) => res.json())
-          .then(() => {});
         Swal.fire({
           icon: "success",
-          title: "Login Successful",
+          title: "Login Successfully",
           showConfirmButton: false,
           timer: 1500,
         });
@@ -72,68 +56,87 @@ const Login = () => {
       });
   };
 
-  const togglePasswordVisibility = () => {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
+  const handleGithubSignIn = () => {
+    githubSignIn()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        Swal.fire({
+          icon: "success",
+          title: "Login Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
 
   return (
-    <div className="flex items-center justify-center bg-gray-200 h-screen">
-      <Helmet>
-        <title>SportCamp | LogIn</title>
-      </Helmet>
-      <div className="bg-white rounded-lg shadow-md p-8">
-        <h2 className="text-3xl font-bold mb-6 text-center">Log In</h2>
-        <form className="max-w-sm mx-auto" onSubmit={handleLogin}>
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-700 mb-2">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              className="w-full rounded-lg py-2 px-4 border border-gray-300 focus:outline-none focus:border-blue-500"
-              required
-            />
-          </div>
-          <div className="mb-6">
-            <label htmlFor="password" className="block text-gray-700 mb-2">
-              Password
-            </label>
-            <div className="relative">
-              <input
-                type={showPassword ? "text" : "password"}
-                id="password"
-                className="w-full rounded-lg py-2 px-4 border border-gray-300 focus:outline-none focus:border-blue-500"
-                required
-              />
-              <AiFillEye
-                className="absolute top-1/2 right-2 transform -translate-y-1/2 cursor-pointer"
-                onClick={togglePasswordVisibility}
-              />
-            </div>
-          </div>
+    <div className="max-w-md mx-auto my-20 p-6 bg-white rounded-md shadow-md">
+      <form onSubmit={loginButtonClick}>
+        <div className="mb-4">
+          <label htmlFor="email" className="block text-gray-700 font-bold mb-2">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            className="w-full border-gray-300 rounded-md shadow-xl focus:border-blue-500 focus:ring-blue-500 px-3 py-2"
+            required
+          />
+        </div>
+
+        <div className="mb-4">
+          <label
+            htmlFor="password"
+            className="block text-gray-700 font-bold mb-2"
+            required
+          >
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            className="w-full border-gray-300 rounded-md shadow-xl focus:border-blue-500 focus:ring-blue-500 px-3 py-2"
+          />
+        </div>
+
+        <div>
           <button
             type="submit"
-            className="btn btn-outline btn-accent w-full py-2 px-4 rounded-lg text-white font-bold"
+            className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
             Log In
           </button>
-        </form>
-        <div className="mt-6 text-center">
+        </div>
+        <div className="flex justify-center mt-4">
           <button
-            className="btn btn-secondary w-full py-2 px-4 rounded-lg text-white font-bold"
             onClick={handleGoogleSignIn}
+            className="bg-red-500 text-white px-4 py-2 rounded-md shadow-md mr-2"
           >
-            Sign in with Google
+            Google
+          </button>
+          <button
+            onClick={handleGithubSignIn}
+            className="bg-gray-800 text-white px-4 py-2 rounded-md shadow-md ml-2"
+          >
+            GitHub
           </button>
         </div>
-        <p className="mt-6 text-center">
+
+        <div className="mt-4 text-center">
           Don&apos;t have an account?{" "}
-          <Link to="/registration" className="text-blue-500 underline">
-            SignUp here
-          </Link>
-        </p>
-      </div>
+          <p className="text-blue-500 hover:text-red-700 link">
+            <Link to="/register">Go to the register page</Link>
+          </p>{" "}
+          .
+        </div>
+      </form>
     </div>
   );
 };
