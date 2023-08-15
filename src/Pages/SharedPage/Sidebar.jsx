@@ -3,9 +3,10 @@ import { useRef } from "react";
 import { motion } from "framer-motion";
 import { IoIosArrowBack } from "react-icons/io";
 import { SlSettings } from "react-icons/sl";
-import { AiOutlineAppstore } from "react-icons/ai";
+import { AiOutlineHome } from "react-icons/ai";
 import { BsPerson } from "react-icons/bs";
 import { HiOutlineDatabase } from "react-icons/hi";
+import { IoMdLogIn } from "react-icons/io";
 import { useMediaQuery } from "react-responsive";
 import { MdMenu } from "react-icons/md";
 import { NavLink, useLocation } from "react-router-dom";
@@ -76,15 +77,11 @@ const Sidebar = () => {
         animate={open ? "open" : "closed"}
         className=" bg-white text-gray shadow-xl z-[999] max-w-[16rem]  w-[16rem] 
             overflow-hidden md:relative fixed
-            h-[40vh] "
+            h-screen "
       >
         <div className="flex items-center gap-2.5 font-medium border-b py-3 border-slate-300  mx-3">
-          <img
-            src="https://img.icons8.com/color/512/firebase.png"
-            width={45}
-            alt=""
-          />
-          <span className="text-xl whitespace-pre">Fireball</span>
+          <img src="https://i.ibb.co/P1P4vBP/logo.png" width={45} alt="" />
+          <span className="text-xl whitespace-pre">SportCamp</span>
         </div>
 
         <div className="flex flex-col  h-full">
@@ -94,8 +91,8 @@ const Sidebar = () => {
                 to={"/"}
                 className="p-2.5 flex rounded-md gap-6 items-center md:cursor-pointer cursor-default duration-300 font-medium"
               >
-                <AiOutlineAppstore size={23} className="min-w-max" />
-                All Apps
+                <AiOutlineHome size={23} className="min-w-max" />
+                Home
               </NavLink>
             </li>
             <li>
@@ -127,7 +124,19 @@ const Sidebar = () => {
               </NavLink>
             </li>
           </ul>
+          {open && (
+            <div className="text-center mt-3 ps-3  border-b py-3 border-slate-300">
+              <NavLink
+                to="/login"
+                className="p-2.5 flex rounded-md gap-6 items-center md:cursor-pointer cursor-default duration-300 font-medium bg-gray-100"
+              >
+                <IoMdLogIn size={23} className="min-w-max" />
+                Login
+              </NavLink>
+            </div>
+          )}
         </div>
+
         <motion.div
           onClick={() => {
             setOpen(!open);
