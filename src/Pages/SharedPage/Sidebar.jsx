@@ -10,12 +10,16 @@ import { IoMdLogIn } from "react-icons/io";
 import { useMediaQuery } from "react-responsive";
 import { MdMenu } from "react-icons/md";
 import { NavLink, useLocation } from "react-router-dom";
+// import useTheme from "../../Hooks/useTheme";
+// import { BsMoonStarsFill, BsFillBrightnessHighFill } from "react-icons/bs";
 
 const Sidebar = () => {
   let isTabletMid = useMediaQuery({ query: "(max-width: 300px)" });
   const [open, setOpen] = useState(isTabletMid ? false : true);
   const sidebarRef = useRef();
   const { pathname } = useLocation();
+
+  // const { isDarkMode, toggleTheme } = useTheme();
 
   useEffect(() => {
     if (isTabletMid) {
@@ -136,6 +140,23 @@ const Sidebar = () => {
               Login
             </NavLink>
           </div>
+          {/* <div>
+            {isDarkMode ? (
+              <BsMoonStarsFill
+                className={`w-6 h-6 ${
+                  isDarkMode ? "text-white" : "text-gray-700"
+                }`}
+                onClick={toggleTheme}
+              ></BsMoonStarsFill>
+            ) : (
+              <BsFillBrightnessHighFill
+                className={`w-6 h-6 ${
+                  isDarkMode ? "text-white" : "text-gray-700"
+                }`}
+                onClick={toggleTheme}
+              ></BsFillBrightnessHighFill>
+            )}
+          </div> */}
         </div>
 
         <motion.div
