@@ -4,6 +4,7 @@ import RootLayout from "./Pages/SharedPage/RootLayout";
 import Login from "./Pages/User/Login";
 import { Route, Routes } from "react-router-dom";
 import Registration from "./Pages/User/Registration";
+import Home from "./Pages/Home/Home";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       </Helmet>
       <RootLayout>
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/registration" element={<Registration />} />
         </Routes>

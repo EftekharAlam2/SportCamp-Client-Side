@@ -3,6 +3,7 @@ import App from "../App";
 import ErrorPage from "../Pages/SharedPage/ErrorPage";
 import Login from "../Pages/User/Login";
 import Registration from "../Pages/User/Registration";
+import Home from "../Pages/Home/Home";
 
 export const router = createBrowserRouter([
   {
@@ -10,6 +11,10 @@ export const router = createBrowserRouter([
     element: <App></App>,
     errorElement: <ErrorPage></ErrorPage>,
     children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
       {
         path: "/login",
         element: <Login></Login>,
