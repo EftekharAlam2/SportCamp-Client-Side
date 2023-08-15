@@ -1,4 +1,5 @@
 import {
+  GithubAuthProvider,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
@@ -9,12 +10,13 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
-import app from "../Firebase/firebase.config";
+import app from "../../Firebase/firebase.init";
 
 export const Context = createContext(null);
 
 const auth = getAuth(app);
 const goggleProvider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
 
 const Providers = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -55,11 +57,16 @@ const Providers = ({ children }) => {
     return signInWithPopup(auth, goggleProvider);
   };
 
+  const githubSignIn = () => {
+    return signInWithPopup(auth, githubProvider);
+  };
+
   const authInfo = {
     createUser,
     updateUser,
     signIn,
     googleSignIn,
+    githubSignIn,
     user,
     logOut,
     loading,
