@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import Footer from "./Pages/SharedPage/Footer";
 import NavBar from "./Pages/SharedPage/NavBar";
 import { Helmet } from "react-helmet-async";
-import Sidebar from "./Pages/SharedPage/Index";
+import Sidebar from "./Pages/SharedPage/Sidebar";
 
 function App() {
   return (

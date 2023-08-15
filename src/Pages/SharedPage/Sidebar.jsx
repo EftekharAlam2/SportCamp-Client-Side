@@ -107,19 +107,28 @@ const Sidebar = () => {
         <div className="flex flex-col  h-full">
           <ul className="whitespace-pre px-2.5 text-[0.9rem] py-5 flex flex-col gap-1  font-medium overflow-x-hidden scrollbar-thin scrollbar-track-white scrollbar-thumb-slate-100   md:h-[68%] h-[70%]">
             <li>
-              <NavLink to={"/"} className="link">
+              <NavLink
+                to={"/"}
+                className="p-2.5 flex rounded-md gap-6 items-center md:cursor-pointer cursor-default duration-300 font-medium"
+              >
                 <AiOutlineAppstore size={23} className="min-w-max" />
                 All Apps
               </NavLink>
             </li>
             <li>
-              <NavLink to={"/authentication"} className="link">
+              <NavLink
+                to={"/authentication"}
+                className="p-2.5 flex rounded-md gap-6 items-center md:cursor-pointer cursor-default duration-300 font-medium"
+              >
                 <BsPerson size={23} className="min-w-max" />
                 Authentication
               </NavLink>
             </li>
             <li>
-              <NavLink to={"/stroage"} className="link">
+              <NavLink
+                to={"/stroage"}
+                className="p-2.5 flex rounded-md gap-6 items-center md:cursor-pointer cursor-default duration-300 font-medium"
+              >
                 <HiOutlineDatabase size={23} className="min-w-max" />
                 Stroage
               </NavLink>
@@ -138,7 +147,10 @@ const Sidebar = () => {
               </div>
             )}
             <li>
-              <NavLink to={"/settings"} className="link">
+              <NavLink
+                to={"/settings"}
+                className="p-2.5 flex rounded-md gap-6 items-center md:cursor-pointer cursor-default duration-300 font-medium"
+              >
                 <SlSettings size={23} className="min-w-max" />
                 Settings
               </NavLink>

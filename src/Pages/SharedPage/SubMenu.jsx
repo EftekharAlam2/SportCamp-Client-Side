@@ -9,7 +9,9 @@ const SubMenu = ({ data }) => {
   return (
     <>
       <li
-        className={`link ${pathname.includes(data.name) && "text-blue-600"}`}
+        className={`p-2.5 flex rounded-md gap-6 items-center md:cursor-pointer cursor-default duration-300 font-medium ${
+          pathname.includes(data.name) && "text-blue-600"
+        }`}
         onClick={() => setSubMenuOpen(!subMenuOpen)}
       >
         <data.icon size={23} className="min-w-max" />
@@ -35,7 +37,7 @@ const SubMenu = ({ data }) => {
             {/* className="hover:text-blue-600 hover:font-medium" */}
             <NavLink
               to={`/${data.name}/${menu}`}
-              className="link !bg-transparent capitalize"
+              className="p-2.5 flex rounded-md gap-6 items-center md:cursor-pointer cursor-default duration-300 font-medium !bg-transparent capitalize"
             >
               {menu}
             </NavLink>
