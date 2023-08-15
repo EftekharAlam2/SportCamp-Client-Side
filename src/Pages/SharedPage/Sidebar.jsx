@@ -12,7 +12,7 @@ import { MdMenu } from "react-icons/md";
 import { NavLink, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
-  let isTabletMid = useMediaQuery({ query: "(max-width: 768px)" });
+  let isTabletMid = useMediaQuery({ query: "(max-width: 300px)" });
   const [open, setOpen] = useState(isTabletMid ? false : true);
   const sidebarRef = useRef();
   const { pathname } = useLocation();
@@ -33,6 +33,7 @@ const Sidebar = () => {
     ? {
         open: {
           x: 0,
+          y: 0,
           width: "16rem",
           transition: {
             damping: 40,
@@ -40,6 +41,7 @@ const Sidebar = () => {
         },
         closed: {
           x: -250,
+          y: 0,
           width: 0,
           transition: {
             damping: 40,
@@ -124,17 +126,16 @@ const Sidebar = () => {
               </NavLink>
             </li>
           </ul>
-          {open && (
-            <div className="text-center mt-3 ps-3  border-b py-3 border-slate-300">
-              <NavLink
-                to="/login"
-                className="p-2.5 flex rounded-md gap-6 items-center md:cursor-pointer cursor-default duration-300 font-medium bg-gray-100"
-              >
-                <IoMdLogIn size={23} className="min-w-max" />
-                Login
-              </NavLink>
-            </div>
-          )}
+
+          <div className="text-center mt-3 ps-3  border-b py-3 border-slate-300 ">
+            <NavLink
+              to="/login"
+              className="p-2.5 flex rounded-md gap-6 items-center md:cursor-pointer cursor-default duration-300 font-medium bg-gray-100"
+            >
+              <IoMdLogIn size={23} className="min-w-max" />
+              Login
+            </NavLink>
+          </div>
         </div>
 
         <motion.div
