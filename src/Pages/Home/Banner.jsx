@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Slide } from "react-awesome-reveal";
-import { Link } from "react-router-dom";
+// import { Slide } from "react-awesome-reveal";
+// import { Link } from "react-router-dom";
 
 const backgrounds = [
   "url(https://i.ibb.co/8P9yDDd/1.jpg)",
