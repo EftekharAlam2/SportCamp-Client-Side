@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Context } from "../../AuthProviders/Providers";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const { signIn, googleSignIn, githubSignIn } = useContext(Context);
@@ -76,6 +77,9 @@ const Login = () => {
 
   return (
     <div className="max-w-md mx-auto my-20 p-6 bg-white rounded-md shadow-md">
+      <Helmet>
+        <title>SportCamp | SignIn</title>
+      </Helmet>
       <form onSubmit={loginButtonClick}>
         <div className="mb-4">
           <label htmlFor="email" className="block text-gray-700 font-bold mb-2">
