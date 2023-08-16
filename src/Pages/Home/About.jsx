@@ -34,7 +34,7 @@ const About = () => {
           className="bg-gradient-to-r text-2xl text-center lg:text-4xl from-pink-500 to-orange-700 text-transparent bg-clip-text mt-10 mb-10"
         >
           <span className="bg-gradient-to-r from-pink-500 to-orange-500 text-transparent bg-clip-text">
-            Welcome To Dance Studio
+            Welcome To SportCamp School
           </span>
         </h1>
         <div
@@ -55,13 +55,12 @@ const About = () => {
                 style={{ letterSpacing: "3px" }}
                 className="text-2xl lg:text-4xl text-blue-600 ms-9 lg:ms-1 dark:text-blue-200 font-bold"
               >
-                BEST DANCE SCHOOL &amp; <br></br> STUDIO SINCE 2018
+                BEST SPORTCAMP SCHOOL &amp; <br></br> SINCE 2011
               </h1>
               <p className=" mt-7 text-lg ms-9 lg:ms-1 text-gray-600 dark:text-gray-200">
-                Unleash your dance potential at our award-winning studio since
-                2018. Join our vibrant community, learn from passionate
-                instructors, and embark on an extraordinary journey. Join us
-                today!
+                Experience the thrill of sports and the joy of learning at
+                SportCamp School, where young athletes discover their potential
+                through fun and skill-building activities.
               </p>
             </div>
             <div className="flex justify-center gap-10 lg:gap-20 items-center mt-6 lg:mt-10 ms-5 lg:ms-11">
