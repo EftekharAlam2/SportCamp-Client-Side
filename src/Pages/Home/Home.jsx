@@ -2,9 +2,8 @@ import Banner from "./Banner";
 
 const Home = () => {
   return (
-    <div className="bg-red-200">
+    <div>
       <Banner></Banner>
-      <h1>Home</h1>
     </div>
   );
 };
