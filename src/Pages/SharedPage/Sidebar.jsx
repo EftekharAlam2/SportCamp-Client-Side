@@ -157,6 +157,16 @@ const Sidebar = () => {
               ></BsFillBrightnessHighFill>
             )}
           </div> */}
+          <div>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam
+            quisquam doloremque mollitia beatae saepe, possimus sint placeat,
+            ipsa id ipsam facilis ea corrupti maxime nulla omnis unde. Aliquid
+            maxime cum, assumenda, laboriosam consequuntur minima, maiores
+            quaerat dicta mollitia tenetur provident ratione corrupti
+            praesentium recusandae doloribus aperiam at. Maiores, expedita
+            explicabo? Magnam, ducimus minus officia adipisci error nisi sit
+            distinctio odio.
+          </div>
         </div>
 
         <motion.div
